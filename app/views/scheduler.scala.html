@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>JobScheduler</title>
+    
+	<link rel="stylesheet" href="@routes.Assets.at("stylesheets/scheduler.css")">
+	<script type="text/javascript" src="@routes.Assets.at("javascripts/jquery-1.9.0.min.js")"></script>
+	<script type="text/javascript" src="@routes.Assets.at("javascripts/scheduler.js")"></script>
+</head>
+<body>
+
+	<h2>Mail Scheduler Application </h2>
+	<form>
+		<label>From :</label>
+		<input type="email" name="from_email" id="from_email" required><br> 
+		<label>Password :</label>
+		<input type="password" name="password" id="password" required><br> 
+		<label>Subject :</label>
+		<input type="text" name="subject" id="subject" required><br> 
+		<label>To :</label>
+		<input type="email" name="to_email" id="to_email" required><br> 
+		<label>Message :</label>
+		<textarea rows="4" cols="30" name="message" id="message" required></textarea><br>  
+		<label>Date :</label>
+		<input type="date" name="date" id="date" required><br>
+		<label>Time :</label>
+		<input type="time" name="time" id="time" required><br><br>  
+		<input type="submit" value="Submit" id="submit" onclick="hello()"><br/>
+  	</form>
+</body>
+</html>
