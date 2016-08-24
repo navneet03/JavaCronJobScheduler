@@ -10,7 +10,7 @@ Java Play Cron Job Scheduler API
   *Make a general purpose scheduler which takes parameters similar to the cron daemon in UNIX. One of the parameter
    	will be the time string and another will be the actual command to be executed.
   *For Example :- We would like to schedule an automatics email every third	Sunday of each month.
-	. /my program 0 , 2 ,  ,  ,  // path/ to / email "Hello , welcome to greedy world . . ! "
+	. /my program 0 , 2 , * , * , * // path/ to / email "Hello , welcome to greedy world . . ! "
  
 ##Technology Used:
 
