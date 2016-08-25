@@ -14,24 +14,30 @@ Java Play Cron Job Scheduler API
  
 ##Technology Used:
 
- **Front end:** Html, Javascript
+ **Front end:** Html, Bootstrap, Javascript
 
- **Backend:** Java 1.8, Play Framework 2.2.6, Quartz 2.2, Javax.mail 1.5
+ **Backend:** Java 1.8, Play Framework 2.2.6, Quartz 2.2, JavaMail 1.5
 
 
 ##Application Overview:
 
   * An application that schedule the email on regular interval.
-  * Using HTML input form get the value of time, date, from email, to email, email subject and email body.
-  * On submit input form value schedule the email based on the above information. 
+  * Using HTML input form get the value of schedule time, from email, to email, email subject and email body.
+  * On submit input form value schedule the email based on the given user input information.
+  * Concurrent job schedule & multiple job at a time is possible. 
 
 ##Implementation Overview:
 
   * Create an application using the java play framework.
-  * Design simple HTML input form that takes user input of time, date, from email, to email, email subject and email body.
+  * Design simple HTML input form that takes input value of time, from email, to email, email subject and email body.
+  * Convert the input time value into cron time expression.
   * Used ajax for client server communication, quartz for schedule cron job and java mail for send mail.
   * On ajax call send all value to  "getSchedulerDetails" API.
-  * Now after getting the date & time parse into cron time format and trigger the cron job.
-  * Used Random function to make jonkey unique
-  * After triggering the cron job send email.
+  * Now after getting all the details, trigger the cron job.
+  * Used Random function to make jobkey unique
+
+##Limitation:
+  
+  * Currently some time expression(2015-2018, 0/5, 6#3) is not possible to take input using UI form.
+
  

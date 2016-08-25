@@ -2,29 +2,36 @@ package controllers;
 
 import play.mvc.*;
 import views.html.*;
-import com.fasterxml.jackson.databind.JsonNode;
 
+import org.quartz.JobDataMap;
+
+import com.fasterxml.jackson.databind.JsonNode;
 
 public class Application extends Controller {
 
-    public static Result index() {
-        return ok(index.render("Your new application is ready."));
-    }
-    public static Result scheduler() {
-        return ok(scheduler.render());
-    }
-    public static Result getSchedulerDetails () throws Exception {
-    	 JsonNode json = request().body().asJson();
-    	 String from = json.findPath("from").textValue();
-    	 String password = json.findPath("password").textValue();
-    	 String subject = json.findPath("subject").textValue();
-    	 String to = json.findPath("to").textValue();
-    	 String message = json.findPath("message").textValue();
-    	 String date = json.findPath("date").textValue();
-    	 String time = json.findPath("time").textValue();
-    	 CronScheduler obj = new CronScheduler(from,password,subject,to,message,date,time);
-    	 String res = obj.ScheduleJob();  
-    	 return ok(res);
-    }    
-}
+	public static Result index() {
+		return ok(index.render());
+	}
 
+	public static Result scheduler() {
+		return ok(scheduler.render());
+	}
+
+	public static Result getSchedulerDetails() throws Exception {
+		final JsonNode json = request().body().asJson();
+		final String SchedulerTimePattern = json.findPath("SchedulerTimePattern").textValue();				
+		final JobDataMap mailJobDataMap = getMailJobDataMap(json);
+		return ok(CronScheduler.ScheduleJob("mail", SchedulerTimePattern, mailJobDataMap));
+	}
+
+	public static JobDataMap getMailJobDataMap(final JsonNode jsonNode) {
+		final JobDataMap mailJobDataMap = new JobDataMap();
+		mailJobDataMap.put(MailJob.FROM, jsonNode.findPath(MailJob.FROM).textValue());
+		mailJobDataMap.put(MailJob.TO, jsonNode.findPath(MailJob.TO).textValue());
+		mailJobDataMap.put(MailJob.SUB, jsonNode.findPath(MailJob.SUB).textValue());
+		mailJobDataMap.put(MailJob.MSG, jsonNode.findPath(MailJob.MSG).textValue());
+		mailJobDataMap.put(MailJob.PASSWORD, jsonNode.findPath(MailJob.PASSWORD).textValue());
+		mailJobDataMap.put(MailJob.IS_MAIL_JOB, true);
+		return mailJobDataMap;
+	}
+}

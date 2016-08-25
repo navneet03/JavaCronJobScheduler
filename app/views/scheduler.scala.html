@@ -8,29 +8,120 @@
     <meta name="author" content="">
     <title>JobScheduler</title>
     
+    <link rel="stylesheet" href="@routes.Assets.at("stylesheets/bootstrap.min.css")">
 	<link rel="stylesheet" href="@routes.Assets.at("stylesheets/scheduler.css")">
-	<script type="text/javascript" src="@routes.Assets.at("javascripts/jquery-1.9.0.min.js")"></script>
+		
+	<script type="text/javascript" src="@routes.Assets.at("javascripts/jquery-1.11.0.min.js")"></script>
+	<script type="text/javascript" src="@routes.Assets.at("javascripts/bootstrap.min.js")"></script>		
 	<script type="text/javascript" src="@routes.Assets.at("javascripts/scheduler.js")"></script>
 </head>
 <body>
 
-	<h2>Mail Scheduler Application </h2>
-	<form>
-		<label>From :</label>
+	<h2>Java Mail Scheduler Application </h2>
+	<div class="form-group">
+		<label class="control-label col-sm-2">From :</label>
 		<input type="email" name="from_email" id="from_email" required><br> 
-		<label>Password :</label>
+	</div>
+	<div class="form-group">	
+		<label class="control-label col-sm-2">Password :</label>
 		<input type="password" name="password" id="password" required><br> 
-		<label>Subject :</label>
+	</div>
+	<div class="form-group">	
+		<label class="control-label col-sm-2">Subject :</label>
 		<input type="text" name="subject" id="subject" required><br> 
-		<label>To :</label>
+	</div>
+	<div class="form-group">	
+		<label class="control-label col-sm-2">To :</label>
 		<input type="email" name="to_email" id="to_email" required><br> 
-		<label>Message :</label>
-		<textarea rows="4" cols="30" name="message" id="message" required></textarea><br>  
-		<label>Date :</label>
-		<input type="date" name="date" id="date" required><br>
-		<label>Time :</label>
-		<input type="time" name="time" id="time" required><br><br>  
-		<input type="submit" value="Submit" id="submit" onclick="hello()"><br/>
-  	</form>
+	</div>
+	<div class="form-group">	
+		<label class="control-label col-sm-2">Message :</label>
+		<textarea rows="4" cols="30" name="message" id="message" required></textarea><br>  		 		
+  	</div>
+  	 <div class="form-group">
+        <label class="control-label col-sm-2">second:</label>
+        	<select class="selectpicker" name="second" id="second">
+              <option>*</option>                                                                                               
+        </select>
+    </div>
+     <div class="form-group">
+        <label class="control-label col-sm-2">Minute:</label>
+        	<select class="selectpicker" name="minute" id="minute">
+              <option>*</option>                                                                                               
+        </select>
+    </div>   
+  	<div class="form-group">
+        <label class="control-label col-sm-2">Hour:</label>
+        	<select class="selectpicker" name="hour" id="hour">
+              <option>*</option>                                                                                               
+        </select>
+    </div>   
+    <div class="form-group">
+        <label class="control-label col-sm-2">Day:</label>
+        	<select class="selectpicker" name="day" id="day">        	
+              <option>*</option>
+              <option>?</option>                                                                                                
+        </select>
+    </div>
+    	<div class="form-group">
+        <label class="control-label col-sm-2">Month:</label>
+        	<select class="selectpicker" name="month" id="month">
+              <option>*</option>                                                                                               
+        </select>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2">Week:</label>
+        	<select class="selectpicker" name="week" id="week">
+        	  <option>?</option>
+        	  <option>*</option>   	
+              <option>MON</option>
+              <option>TUE</option> 
+              <option>WED</option> 
+              <option>THU</option> 
+              <option>FRI</option> 
+              <option>SAT</option> 
+              <option>SUN</option>                                                                                                
+        </select>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2">Year:</label>
+        	<select class="selectpicker" name="year" id="year">
+        	  <option>NO</option>   
+              <option>*</option>                                                                                                         
+        </select>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2">Submit :</label>
+        <input type="submit" value="Submit" id="submit" onclick="MailSchedulers()"><br/>
+     </div>   
 </body>
+
+<script type="text/javascript">
+
+	for(var i=0; i<24; i++){
+		var hour_opts=$('<option>'+i+'</option>');
+        $('#hour').append(hour_opts);
+	}
+	for(var i=0; i<60; i++){
+		var minute_opts=$('<option>'+i+'</option>');
+        $('#minute').append(minute_opts);
+	}
+	for(var i=0; i<60; i++){
+		var second_opts=$('<option>'+i+'</option>');
+        $('#second').append(second_opts);
+	}
+	for(var i=1; i<=31; i++){
+		var day_opts=$('<option>'+i+'</option>');
+        $('#day').append(day_opts);
+	}
+	for(var i=1; i<=12; i++){
+		var month_opts=$('<option>'+i+'</option>');
+        $('#month').append(month_opts);
+	}
+	for(var i=2016; i<2051; i++){
+		var year_opts=$('<option>'+i+'</option>');
+        $('#year').append(year_opts);
+	}
+		
+</script>
 </html>

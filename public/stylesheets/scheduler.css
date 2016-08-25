@@ -1,29 +1,8 @@
-#from_email{
-	width: 270px;
-	 margin-left: 38px;
+#from_email, #to_email, #message, #subject, #password{
+	width: 300px;
+	
 }
-#to_email{
- margin-left: 55px;
- width: 270px;
-}
-#time{
- margin-left: 37px;
- width: 270px;
-}
-#date{
- margin-left: 40px;
- width: 270px;
-}
-#message{
-	margin-left: 15px;
- 	width: 270px;
- 	height: 50px;
-}
-#subject{
-	margin-left: 24px;
- 	width: 270px;
-}
-#password{
-	margin-left: 10px;
- 	width: 270px; 	
+#hour, #minute, #second, #year, #day, #month, #week, #submit{
+	width: 300px;
+	height: 28px;
 }
